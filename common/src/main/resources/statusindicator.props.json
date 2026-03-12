@@ -1,0 +1,77 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["status"],
+    "properties": {
+        "status": {
+            "type": "string",
+            "enum": ["ok", "warn", "error", "off"],
+            "default": "off",
+            "description": "The current status of the indicator. Controls the default color when 'customColor' is not set.\n- ok    → green\n- warn  → yellow/orange\n- error → red\n- off   → grey"
+        },
+        "label": {
+            "type": "string",
+            "default": "Status",
+            "description": "Text label displayed below (or beside) the LED indicator."
+        },
+        "labelPosition": {
+            "type": "string",
+            "enum": ["bottom", "top", "left", "right", "none"],
+            "default": "bottom",
+            "description": "Position of the label relative to the indicator circle."
+        },
+        "size": {
+            "type": "integer",
+            "default": 24,
+            "minimum": 8,
+            "maximum": 128,
+            "description": "Diameter of the LED indicator circle in pixels."
+        },
+        "blink": {
+            "type": "boolean",
+            "default": false,
+            "description": "When true the indicator pulses with a blink animation."
+        },
+        "blinkSpeed": {
+            "type": "number",
+            "default": 1.0,
+            "minimum": 0.1,
+            "maximum": 10.0,
+            "description": "Blink speed in Hz (cycles per second). Only used when 'blink' is true.",
+            "visibleWhen": {
+                "property": "blink",
+                "equals": true
+            }
+        },
+        "customColor": {
+            "type": "string",
+            "format": "color",
+            "default": "",
+            "description": "Override the status colour with any CSS colour string (e.g. '#FF5733' or 'rgb(255,87,51)'). Leave empty to use the default status colour."
+        },
+        "showGlow": {
+            "type": "boolean",
+            "default": true,
+            "description": "When true a soft glow shadow is applied around the indicator circle."
+        },
+        "fontSize": {
+            "type": "integer",
+            "default": 13,
+            "minimum": 8,
+            "maximum": 72,
+            "description": "Font size of the label text in pixels."
+        },
+        "fontColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#333333",
+            "description": "Color of the label text."
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": {
+                "classes": ""
+            }
+        }
+    }
+}

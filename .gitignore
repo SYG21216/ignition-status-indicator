@@ -1,0 +1,29 @@
+# Gradle build output
+.gradle/
+build/
+out/
+*/build/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.eclipse
+.classpath
+.project
+.settings/
+*.launch
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Module signing key (never commit)
+sign.props
+
+# Node (if front-end tooling is added later)
+node_modules/
+npm-debug.log*
+build/
+.gradle/

@@ -1,0 +1,8 @@
+# sign.props — Module Signing Configuration
+# Copy this file to sign.props and fill in your certificate details.
+# DO NOT commit sign.props to version control.
+#
+# keystoreFile=/path/to/your.keystore
+# keystorePassword=changeme
+# certAlias=mykey
+# certPassword=changeme

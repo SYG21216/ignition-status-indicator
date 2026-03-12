@@ -1,0 +1,27 @@
+/*
+ * StatusIndicator Perspective Component — CSS
+ *
+ * 파일: gateway/src/main/resources/mounted/css/statusindicator.css
+ *
+ * blink 애니메이션 키프레임과 기본 스타일을 정의합니다.
+ * JavaScript 의 inline style 로도 대부분의 스타일이 적용되지만,
+ * @keyframes 는 CSS 파일에서만 선언할 수 있습니다.
+ */
+
+/* ─── blink (점멸) 애니메이션 ────────────────────────────────────── */
+@keyframes si-blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.15;
+    }
+}
+
+/* ─── 컴포넌트 루트 컨테이너 기본 설정 ──────────────────────────── */
+/* Perspective 는 컴포넌트 루트를 position:absolute 로 배치하므로     */
+/* overflow:hidden 을 사용해 내부 콘텐츠가 넘치지 않게 합니다.        */
+.ia_perspectiveComponent {
+    overflow: visible;  /* glow 효과가 잘리지 않도록 */
+}
