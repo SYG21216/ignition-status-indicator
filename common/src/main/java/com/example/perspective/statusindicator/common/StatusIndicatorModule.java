@@ -21,7 +21,7 @@ public class StatusIndicatorModule {
     public static final String URL_ALIAS = "statusindicator";
 
     /** Palette category label shown in the Perspective Designer component panel. */
-    public static final String COMPONENT_CATEGORY = "Status Indicator";
+    public static final String COMPONENT_CATEGORY = "Components";
 
     /**
      * Browser resources (JS + CSS) that Perspective will inject into every

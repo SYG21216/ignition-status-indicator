@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "series": {
+            "type": "array",
+            "description": "Array of data series to plot.",
+            "default": [
+                {
+                    "name": "Series A",
+                    "color": "#3b82f6",
+                    "data": [10, 40, 30, 60, 45, 75, 55]
+                }
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name":  { "type": "string" },
+                    "color": { "type": "string", "format": "color" },
+                    "data":  { "type": "array", "items": { "type": "number" } }
+                }
+            }
+        },
+        "labels": {
+            "type": "array",
+            "description": "X-axis category labels.",
+            "default": ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+            "items": { "type": "string" }
+        },
+        "title": {
+            "type": "string",
+            "default": "Line Chart",
+            "description": "Chart title."
+        },
+        "xAxisLabel": {
+            "type": "string",
+            "default": "",
+            "description": "Label for the X axis."
+        },
+        "yAxisLabel": {
+            "type": "string",
+            "default": "",
+            "description": "Label for the Y axis."
+        },
+        "showDots": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show data point dots on the lines."
+        },
+        "showGrid": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show background grid lines."
+        },
+        "showLegend": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show the series legend."
+        },
+        "smooth": {
+            "type": "boolean",
+            "default": false,
+            "description": "Use smooth (bezier) curves instead of straight lines."
+        },
+        "fillArea": {
+            "type": "boolean",
+            "default": false,
+            "description": "Fill the area under the lines."
+        },
+        "backgroundColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#ffffff",
+            "description": "Chart background color."
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": { "classes": "" }
+        }
+    }
+}

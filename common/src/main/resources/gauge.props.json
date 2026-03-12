@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["value"],
+    "properties": {
+        "value": {
+            "type": "number",
+            "default": 0,
+            "description": "Current value to display on the gauge."
+        },
+        "min": {
+            "type": "number",
+            "default": 0,
+            "description": "Minimum value of the gauge range."
+        },
+        "max": {
+            "type": "number",
+            "default": 100,
+            "description": "Maximum value of the gauge range."
+        },
+        "unit": {
+            "type": "string",
+            "default": "%",
+            "description": "Unit label displayed below the value."
+        },
+        "title": {
+            "type": "string",
+            "default": "Gauge",
+            "description": "Title label displayed below the gauge arc."
+        },
+        "thresholds": {
+            "type": "array",
+            "description": "Color thresholds. Each entry has a 'value' and 'color'. Sorted ascending.",
+            "default": [
+                { "value": 0,  "color": "#22c55e" },
+                { "value": 60, "color": "#f59e0b" },
+                { "value": 80, "color": "#ef4444" }
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": { "type": "number" },
+                    "color": { "type": "string", "format": "color" }
+                }
+            }
+        },
+        "showValue": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show the numeric value in the center of the gauge."
+        },
+        "decimalPlaces": {
+            "type": "integer",
+            "default": 1,
+            "minimum": 0,
+            "maximum": 6,
+            "description": "Number of decimal places for the displayed value."
+        },
+        "arcWidth": {
+            "type": "integer",
+            "default": 16,
+            "minimum": 4,
+            "maximum": 60,
+            "description": "Thickness of the gauge arc in pixels."
+        },
+        "startAngle": {
+            "type": "number",
+            "default": -135,
+            "description": "Start angle of the arc in degrees (0 = right, -90 = top)."
+        },
+        "endAngle": {
+            "type": "number",
+            "default": 135,
+            "description": "End angle of the arc in degrees."
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": { "classes": "" }
+        }
+    }
+}

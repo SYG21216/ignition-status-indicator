@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "value": {
+            "type": "number",
+            "default": 0,
+            "description": "Primary KPI value to display."
+        },
+        "label": {
+            "type": "string",
+            "default": "Total Value",
+            "description": "Descriptive label for the metric."
+        },
+        "unit": {
+            "type": "string",
+            "default": "",
+            "description": "Unit string appended after the value (e.g. '%', 'kW', '°C')."
+        },
+        "decimalPlaces": {
+            "type": "integer",
+            "default": 1,
+            "minimum": 0,
+            "maximum": 6,
+            "description": "Number of decimal places shown for the value."
+        },
+        "trend": {
+            "type": "string",
+            "enum": ["up", "down", "flat", "none"],
+            "default": "none",
+            "description": "Trend direction arrow shown next to the value."
+        },
+        "trendValue": {
+            "type": "string",
+            "default": "",
+            "description": "Trend annotation text, e.g. '+3.2%' or '-12'."
+        },
+        "icon": {
+            "type": "string",
+            "enum": ["none","bolt","temp","flow","pressure","power","speed","count","alarm","check"],
+            "default": "none",
+            "description": "Optional icon shown in the card header."
+        },
+        "accentColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#3b82f6",
+            "description": "Accent color used for the icon background and trend indicator."
+        },
+        "backgroundColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#ffffff",
+            "description": "Card background color."
+        },
+        "valueColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#111827",
+            "description": "Color of the primary value text."
+        },
+        "labelColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#6b7280",
+            "description": "Color of the label text."
+        },
+        "showBorder": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show a border around the card."
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": { "classes": "" }
+        }
+    }
+}
