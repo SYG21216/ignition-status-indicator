@@ -2,14 +2,23 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "title": {
+            "type": "string",
+            "default": "Bar Chart Panel",
+            "description": "Panel title."
+        },
         "series": {
             "type": "array",
-            "description": "Array of data series.",
+            "description": "Data series. Each series has name, color, data array. Each data point: { label, v, extraProps }",
             "default": [
                 {
-                    "name": "Series A",
-                    "color": "#6366f1",
-                    "data": [42, 68, 35, 78, 55, 90, 47]
+                    "name": "cpu",
+                    "color": "#73bf69",
+                    "data": [
+                        { "label": "Server A", "v": 30 },
+                        { "label": "Server A", "v": 45 },
+                        { "label": "Server B", "v": 26 }
+                    ]
                 }
             ],
             "items": {
@@ -17,59 +26,46 @@
                 "properties": {
                     "name":  { "type": "string" },
                     "color": { "type": "string", "format": "color" },
-                    "data":  { "type": "array", "items": { "type": "number" } }
+                    "data":  {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "label": { "type": "string" },
+                                "v":     { "type": "number" },
+                                "extraProps": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name":  { "type": "string" },
+                                            "value": { "type": "string" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
-        "labels": {
-            "type": "array",
-            "description": "Category labels for the bars.",
-            "default": ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-            "items": { "type": "string" }
-        },
-        "title": {
-            "type": "string",
-            "default": "Bar Chart",
-            "description": "Chart title."
-        },
-        "orientation": {
-            "type": "string",
-            "enum": ["vertical", "horizontal"],
-            "default": "vertical",
-            "description": "Bar direction."
-        },
-        "stacked": {
-            "type": "boolean",
-            "default": false,
-            "description": "Stack multiple series on top of each other."
+        "barRadius": {
+            "type": "integer",
+            "default": 3,
+            "minimum": 0,
+            "maximum": 20,
+            "description": "Corner radius of bars."
         },
         "showValues": {
             "type": "boolean",
             "default": false,
-            "description": "Display the numeric value on top of each bar."
-        },
-        "showGrid": {
-            "type": "boolean",
-            "default": true,
-            "description": "Show background grid lines."
-        },
-        "showLegend": {
-            "type": "boolean",
-            "default": true,
-            "description": "Show the series legend."
-        },
-        "barRadius": {
-            "type": "integer",
-            "default": 4,
-            "minimum": 0,
-            "maximum": 20,
-            "description": "Corner radius of each bar in pixels."
+            "description": "Show numeric value above each bar."
         },
         "backgroundColor": {
             "type": "string",
             "format": "color",
-            "default": "#ffffff",
-            "description": "Chart background color."
+            "default": "#181b1f",
+            "description": "Panel background color."
         },
         "style": {
             "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",

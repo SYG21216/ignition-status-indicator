@@ -14,6 +14,7 @@ import com.example.perspective.statusindicator.common.comp.Gauge;
 import com.example.perspective.statusindicator.common.comp.LineChart;
 import com.example.perspective.statusindicator.common.comp.BarChart;
 import com.example.perspective.statusindicator.common.comp.StatCard;
+import com.example.perspective.statusindicator.common.comp.TimeSeries;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
@@ -52,7 +53,8 @@ public class StatusIndicatorGatewayHook extends AbstractGatewayModuleHook {
             this.componentRegistry.registerComponent(LineChart.DESCRIPTOR);
             this.componentRegistry.registerComponent(BarChart.DESCRIPTOR);
             this.componentRegistry.registerComponent(StatCard.DESCRIPTOR);
-            log.info("All 5 custom components registered successfully.");
+            this.componentRegistry.registerComponent(TimeSeries.DESCRIPTOR);
+            log.info("All 6 custom components registered successfully.");
         } else {
             log.error("ComponentRegistry is null — custom components will not function!");
         }
@@ -67,6 +69,7 @@ public class StatusIndicatorGatewayHook extends AbstractGatewayModuleHook {
             this.componentRegistry.removeComponent(LineChart.COMPONENT_ID);
             this.componentRegistry.removeComponent(BarChart.COMPONENT_ID);
             this.componentRegistry.removeComponent(StatCard.COMPONENT_ID);
+            this.componentRegistry.removeComponent(TimeSeries.COMPONENT_ID);
         }
     }
 

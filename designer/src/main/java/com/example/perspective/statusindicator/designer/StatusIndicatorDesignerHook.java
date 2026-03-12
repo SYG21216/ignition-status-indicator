@@ -12,6 +12,7 @@ import com.example.perspective.statusindicator.common.comp.Gauge;
 import com.example.perspective.statusindicator.common.comp.LineChart;
 import com.example.perspective.statusindicator.common.comp.BarChart;
 import com.example.perspective.statusindicator.common.comp.StatCard;
+import com.example.perspective.statusindicator.common.comp.TimeSeries;
 
 /**
  * Designer-scope hook. Registers all custom components onto the palette
@@ -48,8 +49,9 @@ public class StatusIndicatorDesignerHook extends AbstractDesignerModuleHook {
         registry.registerComponent(LineChart.DESCRIPTOR);
         registry.registerComponent(BarChart.DESCRIPTOR);
         registry.registerComponent(StatCard.DESCRIPTOR);
+        registry.registerComponent(TimeSeries.DESCRIPTOR);
 
-        logger.info("All 5 custom components registered in Designer palette under 'Components' category.");
+        logger.info("All 6 custom components registered in Designer palette under 'Components' category.");
     }
 
     @Override
@@ -60,6 +62,7 @@ public class StatusIndicatorDesignerHook extends AbstractDesignerModuleHook {
             registry.removeComponent(LineChart.COMPONENT_ID);
             registry.removeComponent(BarChart.COMPONENT_ID);
             registry.removeComponent(StatCard.COMPONENT_ID);
+            registry.removeComponent(TimeSeries.COMPONENT_ID);
             logger.info("All custom components removed from Designer registry.");
         }
     }

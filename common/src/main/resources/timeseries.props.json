@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "type": "string",
+            "default": "TimeSeries Panel",
+            "description": "Panel title displayed in the header."
+        },
+        "series": {
+            "type": "array",
+            "description": "Array of time series. Each series has name, color, and points array.",
+            "default": [
+                {
+                    "name": "cpu",
+                    "color": "#73bf69",
+                    "points": [
+                        { "t": 1635307800000, "v": 28 },
+                        { "t": 1635308100000, "v": 45 },
+                        { "t": 1635308400000, "v": 21 }
+                    ]
+                }
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name":  { "type": "string" },
+                    "color": { "type": "string", "format": "color" },
+                    "points": {
+                        "type": "array",
+                        "description": "Each point: { t: epoch_ms, v: number }",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "t": { "type": "number", "description": "Unix timestamp in milliseconds" },
+                                "v": { "type": "number", "description": "Value" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "fillOpacity": {
+            "type": "number",
+            "default": 0.07,
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Opacity of the area fill under the line (0 = no fill)."
+        },
+        "lineWidth": {
+            "type": "integer",
+            "default": 2,
+            "minimum": 1,
+            "maximum": 8,
+            "description": "Line stroke width in pixels."
+        },
+        "thresholdLines": {
+            "type": "array",
+            "default": [],
+            "description": "Horizontal threshold lines drawn on the chart.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": { "type": "number" },
+                    "color": { "type": "string", "format": "color" },
+                    "label": { "type": "string" }
+                }
+            }
+        },
+        "backgroundColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#181b1f",
+            "description": "Panel background color."
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": { "classes": "" }
+        }
+    }
+}
