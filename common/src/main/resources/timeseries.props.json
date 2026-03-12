@@ -9,11 +9,12 @@
         },
         "series": {
             "type": "array",
-            "description": "Array of time series. Each series has name, color, and points array.",
+            "description": "Array of time series. Each series has name, color, yAxis (0=left,1=right), and points array [{t,v}].",
             "default": [
                 {
                     "name": "cpu",
                     "color": "#73bf69",
+                    "yAxis": 0,
                     "points": [
                         { "t": 1635307800000, "v": 28 },
                         { "t": 1635308100000, "v": 45 },
@@ -26,6 +27,7 @@
                 "properties": {
                     "name":  { "type": "string" },
                     "color": { "type": "string", "format": "color" },
+                    "yAxis": { "type": "integer", "enum": [0, 1], "default": 0, "description": "0=left axis, 1=right axis" },
                     "points": {
                         "type": "array",
                         "description": "Each point: { t: epoch_ms, v: number }",
@@ -53,6 +55,37 @@
             "minimum": 1,
             "maximum": 8,
             "description": "Line stroke width in pixels."
+        },
+        "showDots": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show circle dots at each data point."
+        },
+        "smooth": {
+            "type": "boolean",
+            "default": false,
+            "description": "Use bezier smooth curves instead of straight lines."
+        },
+        "dualYAxis": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable a second Y axis on the right side for series with yAxis=1."
+        },
+        "yAxisLabel": {
+            "type": "string",
+            "default": "",
+            "description": "Label for the left Y axis."
+        },
+        "y2AxisLabel": {
+            "type": "string",
+            "default": "",
+            "description": "Label for the right Y axis (dual axis mode)."
+        },
+        "timeRange": {
+            "type": "string",
+            "enum": ["auto", "5m", "15m", "30m", "1h", "3h", "6h", "12h", "24h", "7d"],
+            "default": "auto",
+            "description": "Time range selector. 'auto' uses full data range."
         },
         "thresholdLines": {
             "type": "array",

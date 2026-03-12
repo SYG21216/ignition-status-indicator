@@ -21,20 +21,20 @@
         "unit": {
             "type": "string",
             "default": "%",
-            "description": "Unit label displayed below the value."
+            "description": "Unit label displayed next to the value."
         },
         "title": {
             "type": "string",
             "default": "Gauge",
-            "description": "Title label displayed below the gauge arc."
+            "description": "Title label displayed at the top."
         },
         "thresholds": {
             "type": "array",
             "description": "Color thresholds. Each entry has a 'value' and 'color'. Sorted ascending.",
             "default": [
-                { "value": 0,  "color": "#22c55e" },
-                { "value": 60, "color": "#f59e0b" },
-                { "value": 80, "color": "#ef4444" }
+                { "value": 0,  "color": "#73bf69" },
+                { "value": 60, "color": "#f2cc0c" },
+                { "value": 80, "color": "#f2495c" }
             ],
             "items": {
                 "type": "object",
@@ -58,20 +58,39 @@
         },
         "arcWidth": {
             "type": "integer",
-            "default": 16,
+            "default": 18,
             "minimum": 4,
             "maximum": 60,
-            "description": "Thickness of the gauge arc in pixels."
+            "description": "Thickness of the gauge arc in SVG units."
         },
         "startAngle": {
             "type": "number",
-            "default": -135,
-            "description": "Start angle of the arc in degrees (0 = right, -90 = top)."
+            "default": -120,
+            "description": "Start angle of the arc in degrees (0=top, -90=left, 90=right)."
         },
         "endAngle": {
             "type": "number",
-            "default": 135,
+            "default": 120,
             "description": "End angle of the arc in degrees."
+        },
+        "needleStyle": {
+            "type": "string",
+            "enum": ["none", "line", "arrow"],
+            "default": "none",
+            "description": "Pointer/needle style drawn on the gauge."
+        },
+        "valueFontSize": {
+            "type": "integer",
+            "default": 18,
+            "minimum": 8,
+            "maximum": 48,
+            "description": "Font size for the center value text (SVG units)."
+        },
+        "backgroundColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#181b1f",
+            "description": "Gauge background color."
         },
         "style": {
             "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",

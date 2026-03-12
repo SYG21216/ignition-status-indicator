@@ -12,12 +12,14 @@
             "description": "Data series. Each series has name, color, data array. Each data point: { label, v, extraProps }",
             "default": [
                 {
-                    "name": "cpu",
+                    "name": "Series A",
                     "color": "#73bf69",
                     "data": [
-                        { "label": "Server A", "v": 30 },
-                        { "label": "Server A", "v": 45 },
-                        { "label": "Server B", "v": 26 }
+                        { "label": "Jan", "v": 30 },
+                        { "label": "Feb", "v": 45 },
+                        { "label": "Mar", "v": 28 },
+                        { "label": "Apr", "v": 55 },
+                        { "label": "May", "v": 40 }
                     ]
                 }
             ],
@@ -49,6 +51,17 @@
                 }
             }
         },
+        "orientation": {
+            "type": "string",
+            "enum": ["vertical", "horizontal"],
+            "default": "vertical",
+            "description": "Bar direction: 'vertical' (default) or 'horizontal'."
+        },
+        "stacked": {
+            "type": "boolean",
+            "default": false,
+            "description": "Stack bars on top of each other (requires same labels across series)."
+        },
         "barRadius": {
             "type": "integer",
             "default": 3,
@@ -59,7 +72,7 @@
         "showValues": {
             "type": "boolean",
             "default": false,
-            "description": "Show numeric value above each bar."
+            "description": "Show numeric value above/inside each bar."
         },
         "backgroundColor": {
             "type": "string",

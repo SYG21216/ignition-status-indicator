@@ -50,25 +50,37 @@
         "backgroundColor": {
             "type": "string",
             "format": "color",
-            "default": "#ffffff",
-            "description": "Card background color."
+            "default": "#181b1f",
+            "description": "Card background color. Default is dark (#181b1f)."
         },
         "valueColor": {
             "type": "string",
             "format": "color",
-            "default": "#111827",
+            "default": "#d8d9da",
             "description": "Color of the primary value text."
         },
         "labelColor": {
             "type": "string",
             "format": "color",
-            "default": "#6b7280",
+            "default": "#9fa7b3",
             "description": "Color of the label text."
         },
         "showBorder": {
             "type": "boolean",
             "default": true,
             "description": "Show a border around the card."
+        },
+        "sparkline": {
+            "type": "array",
+            "default": [],
+            "description": "Array of numbers for the sparkline mini-chart. Empty = no sparkline.",
+            "items": { "type": "number" }
+        },
+        "sparklineColor": {
+            "type": "string",
+            "format": "color",
+            "default": "#3b82f6",
+            "description": "Color of the sparkline."
         },
         "style": {
             "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
